@@ -64,11 +64,13 @@ export const Colors = {
 
 // Fonts
 export const Fonts = {
-  bold: "Okra-Bold",
-  extraBold: "Okra-ExtraBold",
-  medium: "Okra-Medium",
-  mediumLight: "Okra-MediumLight",
-  regular: "Okra-Regular",
+  Charm_Bold: "Charm-Bold",
+  CharmRegular: "Charm-Regular",
+  HiMelodyRegular: "HiMelody-Regular",
+  NotoSans: "NotoSansSyriac",
+  RobotoItalic: "Roboto-Italic",
+  Roboto: "Roboto",
+  RobotoSlab: "RobotoSlab",
 };
 
 // Font Sizes (responsive)

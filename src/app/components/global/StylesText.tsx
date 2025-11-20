@@ -28,7 +28,7 @@ const VariantFontSizeMap: Record<Variant, number> = {
 
 const StyledText: FC<TypographyProps> = ({
   variant = "h7",
-  fontFamily = "regular",
+  fontFamily = "Roboto",
   fontSize,
   style,
   color,
