@@ -60,6 +60,10 @@ export const Colors = {
   error: "#e53935",
   errorLight: "#ef9a9a",
   errorDark: "#c62828",
+
+  PureCanvas: "#ffffff",
+  CloudDrift: "#fafafa",
+  SoftPearl: "#f4f4f5",
 };
 
 // Fonts
@@ -108,6 +112,13 @@ export const Spacings = {
   lg: WP(4),
   xl: WP(5),
   xxl: WP(6),
+};
+
+export const Gradients = {
+  primary: [primary[300], Colors.CloudDrift],
+  primaryDark: ["#364f47", "#141f1c"],
+  primaryDiagonal: ["#527a6c", "#93b5a7", "#ffffff"],
+  secondary: [primary[400], primary[600]],
 };
 
 // Shadows (responsive optional, mainly elevation & offset)

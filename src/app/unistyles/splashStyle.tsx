@@ -17,7 +17,7 @@ export const splashStyle = createStyleSheet(
       textAlign: "center",
       letterSpacing: 2,
       fontWeight: 600,
-      color: "#efefef",
+      color: colors.secondaryLight,
     },
     bottomContainer: {
       position: "absolute",

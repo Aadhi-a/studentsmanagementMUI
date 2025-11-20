@@ -11,6 +11,7 @@ import { useStyles } from "react-native-unistyles";
 import { splashStyle } from "@unistyles/splashStyle";
 import { resetAndNavigate } from "@utils/NavigationUtills";
 import StyledText from "@components/global/StylesText";
+import { storage } from "@utils/mmkvStrorage";
 
 const SplashScreen: FC = () => {
   const { styles } = useStyles(splashStyle);
@@ -45,18 +46,18 @@ const SplashScreen: FC = () => {
     opacity: textOpacity.value,
   }));
 
-  // useEffect(() => {
-  //   const checkLoginStatus = setTimeout(() => {
-  //     const token = storage.getString("Request_Token");
+  useEffect(() => {
+    const checkLoginStatus = setTimeout(() => {
+      const token = storage.getString("Request_Token");
 
-  //     if (token) {
-  //       resetAndNavigate("UserBottomTabs");
-  //     } else {
-  //       resetAndNavigate("Login");
-  //     }
-  //   }, 5000);
-  //   return () => clearTimeout(checkLoginStatus);
-  // }, []);
+      if (token) {
+        resetAndNavigate("Home");
+      } else {
+        resetAndNavigate("Login");
+      }
+    }, 5000);
+    return () => clearTimeout(checkLoginStatus);
+  }, []);
 
   return (
     <View style={styles.mainContainer}>
