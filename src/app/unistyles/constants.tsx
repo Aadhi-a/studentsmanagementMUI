@@ -99,7 +99,7 @@ export const BorderRadius = {
 
 // Border width (responsive)
 export const BorderWidth = {
-  thin: WP(0.2),
+  thin: WP(0.3),
   regular: WP(0.5),
   thick: WP(1),
 };

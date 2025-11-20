@@ -2038,6 +2038,15 @@
   dependencies:
     undici-types "~7.16.0"
 
+"@types/react-native-table-component@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.npmjs.org/@types/react-native-table-component/-/react-native-table-component-1.2.9.tgz"
+  integrity sha512-VBNLTe7M17/zGd6L9ZuD+98bmBPm0c1bVXMOYCuRtQu/1eFmM2aJAGQDsZbylMdbNEI29sSPmzzprB5hoW2jFw==
+  dependencies:
+    "@types/react" "*"
+    csstype "^3.2.2"
+    react-native "*"
+
 "@types/react-reconciler@^0.28.0":
   version "0.28.9"
   resolved "https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.9.tgz"
@@ -6104,7 +6113,7 @@ react-native-unistyles@^2.43.0:
   resolved "https://registry.npmjs.org/react-native-unistyles/-/react-native-unistyles-2.43.0.tgz"
   integrity sha512-TSqbGu6NLNvDR7XufT1kUsFivBgmCP6cQuttd5sLst8xsvcjuEjunVYeloYZiLm7/68lKMiV5zGQiTTZt8M0LQ==
 
-react-native@0.82.1:
+react-native@*, react-native@0.82.1:
   version "0.82.1"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.82.1.tgz"
   integrity sha512-tFAqcU7Z4g49xf/KnyCEzI4nRTu1Opcx05Ov2helr8ZTg1z7AJR/3sr2rZ+AAVlAs2IXk+B0WOxXGmdD3+4czA==
