@@ -74,7 +74,7 @@ function CustomTabBar({ state, descriptors, navigation }) {
             options={options}
             onPress={onPress}
             onLongPress={onLongPress}
-            color={isFocused ? Colors.accentDark : Colors.backgroundDark}
+            color={isFocused ? Colors.primary : Colors.primaryScale[950]}
             gradientColor={
               isFocused ? Colors.gradientActive : Colors.bottomTabInActive
             }
@@ -97,16 +97,14 @@ const userBottomStyle = createStyleSheet(({ fonts, colors, device }) => ({
     right: 0,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: colors.papaGreen50,
+    backgroundColor: colors.neutral,
     paddingVertical: 15,
     paddingHorizontal: 10,
     shadowColor: "black",
     shadowOffset: { width: 0, height: 10 },
-    shadowRadius: 20,
+    shadowRadius: 90,
     shadowOpacity: 0.1,
     elevation: 15,
     zIndex: 10,
-    borderTopWidth: 1,
-    borderTopColor: colors.papaGreen100,
   },
 }));
