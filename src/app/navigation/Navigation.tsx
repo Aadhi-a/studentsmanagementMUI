@@ -7,6 +7,7 @@ import { navigationRef } from "@utils/NavigationUtills";
 import LoginScreen from "@features/auth/LoginScreen";
 import DemoScreen from "@screens/DemoScreen";
 import Animatedtab from "@features/tabs/Animatedtab";
+import ProfileScreen from "@screens/ProfileScreen";
 
 const Stack = createStackNavigator();
 
@@ -15,12 +16,21 @@ export default function Navigation() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName="Splash"
-        screenOptions={{ headerShown: false }}
+        screenOptions={{
+          headerShown: false,
+        }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Demo" component={DemoScreen} />
         <Stack.Screen name="UserBottomTabs" component={Animatedtab} />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            animation: "scale_from_center",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

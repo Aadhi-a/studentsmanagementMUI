@@ -191,7 +191,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
             ]}
           >
             <Icon
-              name="eyelock"
+              name="arrowLeft"
               size={15}
               color={currentPage === 0 ? Colors.neutral : "green"}
             />
@@ -231,7 +231,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
             ]}
           >
             <Icon
-              name="eyeFilled"
+              name="arrowRight"
               size={15}
               color={currentPage === totalPages - 1 ? Colors.neutral : "green"}
             />
