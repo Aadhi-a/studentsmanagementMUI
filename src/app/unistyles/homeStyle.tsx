@@ -36,5 +36,7 @@ export const homeStyle = createStyleSheet(
       borderRadius: borderRadius.round,
       padding: 3,
     },
+
+    adsContainer: {},
   })
 );

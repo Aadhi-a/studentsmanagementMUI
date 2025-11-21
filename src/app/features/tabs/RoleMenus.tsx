@@ -2,7 +2,7 @@ export const roleMenus = {
   admin: [
     { name: "Home", screen: "HomeScreen" },
     { name: "Teachers", screen: "DemoScreen" },
-    { name: "Students", screen: "HomeScreen" },
+    { name: "Students", screen: "AttananceScreen" },
     { name: "Parents", screen: "HomeScreen" },
     { name: "Exams", screen: "HomeScreen" },
   ],

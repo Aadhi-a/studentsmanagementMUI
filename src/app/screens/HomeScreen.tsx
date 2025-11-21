@@ -27,6 +27,7 @@ import { getStorage } from "@utils/mmkvStrorage";
 import { UserType } from "@utils/types/authType";
 import StyledText from "@components/global/StylesText";
 import { navigate, resetAndNavigate } from "@utils/NavigationUtills";
+import AdsBanner from "@components/pages/AdsBanner";
 
 const HomeScreen = () => {
   const { styles } = useStyles(homeStyle);
@@ -163,18 +164,9 @@ const HomeScreen = () => {
           paddingTop: TOTAL_HEADER_HEIGHT,
         }}
       >
-        {Array.from({ length: 100 }, (_, i) => (
-          <Text
-            key={i}
-            style={{
-              fontSize: 16,
-              paddingVertical: 12,
-              textAlign: "center",
-            }}
-          >
-            {i + 1}
-          </Text>
-        ))}
+        <View style={styles.adsContainer}>
+          <AdsBanner />
+        </View>
       </Animated.ScrollView>
     </View>
   );

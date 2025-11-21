@@ -1,6 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React, { FC } from "react";
 import CustomTable from "@components/pages/Table";
+import TeacherTimetableScreen from "@components/pages/TeacherTimetableScreen";
 
 const DemoScreen: FC = () => {
   const columns = [
@@ -24,6 +25,7 @@ const DemoScreen: FC = () => {
       <ScrollView>
         <CustomTable columns={columns} data={data} />
         <Text>HomeScreen</Text>
+        <TeacherTimetableScreen></TeacherTimetableScreen>
       </ScrollView>
     </View>
   );
