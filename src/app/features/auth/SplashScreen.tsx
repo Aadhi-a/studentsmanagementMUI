@@ -51,7 +51,7 @@ const SplashScreen: FC = () => {
       const token = storage.getString("Request_Token");
 
       if (token) {
-        resetAndNavigate("Home");
+        resetAndNavigate("UserBottomTabs");
       } else {
         resetAndNavigate("Login");
       }

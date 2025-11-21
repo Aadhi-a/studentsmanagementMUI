@@ -31,7 +31,7 @@ const LoginScreen: FC = () => {
 
       setTimeout(() => {
         if (user) {
-          resetAndNavigate("Home");
+          resetAndNavigate("UserBottomTabs");
           setStorage("User", JSON.stringify(user));
           setStorage("Request_Token", user.token);
         } else {
