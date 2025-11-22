@@ -6,3 +6,20 @@ export type UserType = {
   token?: string;
   isAdmin?: number;
 };
+
+export type WeekDay =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
+
+export interface TimetableSlot {
+  day: WeekDay;
+  startTime: string;
+  endTime: string;
+  className: string;
+  subject: string;
+}

@@ -8,6 +8,8 @@ import LoginScreen from "@features/auth/LoginScreen";
 import DemoScreen from "@screens/DemoScreen";
 import Animatedtab from "@features/tabs/Animatedtab";
 import ProfileScreen from "@screens/ProfileScreen";
+import TimeTableScreen from "@screens/teacher/TimeTableScreen";
+import StudentAttanceScreen from "@screens/teacher/StudentAttanceScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +29,20 @@ export default function Navigation() {
         <Stack.Screen
           name="Profile"
           component={ProfileScreen}
+          options={{
+            animation: "scale_from_center",
+          }}
+        />
+        <Stack.Screen
+          name="TimeTable"
+          component={TimeTableScreen}
+          options={{
+            animation: "scale_from_center",
+          }}
+        />
+        <Stack.Screen
+          name="StudentAttance"
+          component={StudentAttanceScreen}
           options={{
             animation: "scale_from_center",
           }}

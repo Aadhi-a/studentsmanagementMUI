@@ -37,6 +37,12 @@ export const homeStyle = createStyleSheet(
       padding: 3,
     },
 
-    adsContainer: {},
+    adsContainer: {
+      marginBottom: spacing.xl,
+    },
+    menusCont: {
+      paddingHorizontal: spacing.xl,
+      marginTop: 150,
+    },
   })
 );

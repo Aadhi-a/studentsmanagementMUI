@@ -5,6 +5,7 @@ import {
   Alert,
   Platform,
   Image,
+  FlatList,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Animated, {
@@ -28,6 +29,8 @@ import { UserType } from "@utils/types/authType";
 import StyledText from "@components/global/StylesText";
 import { navigate, resetAndNavigate } from "@utils/NavigationUtills";
 import AdsBanner from "@components/pages/AdsBanner";
+import { homeMenus } from "@assets/data/mockdata";
+import SectionMenu from "@components/pages/SectionMenu";
 
 const HomeScreen = () => {
   const { styles } = useStyles(homeStyle);
@@ -166,6 +169,27 @@ const HomeScreen = () => {
       >
         <View style={styles.adsContainer}>
           <AdsBanner />
+        </View>
+        <View style={styles.menusCont}>
+          <StyledText
+            variant="h4"
+            fontFamily="CharmRegular"
+            color={Colors.neutralDark}
+          >
+            Acadamic
+          </StyledText>
+          <FlatList
+            data={homeMenus}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <SectionMenu
+                title={item.title}
+                img={item.img}
+                router={item.router}
+              />
+            )}
+            numColumns={3}
+          />
         </View>
       </Animated.ScrollView>
     </View>
