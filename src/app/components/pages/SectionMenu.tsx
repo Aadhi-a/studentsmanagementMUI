@@ -36,10 +36,10 @@ export default SectionMenu;
 const SectionMenuStyle = createStyleSheet(
   ({ fonts, colors, device, fontSize }) => ({
     menuItem: {
-      width: device.wp(27),
+      width: device.wp(28),
       height: device.hp(10),
       alignItems: "center",
-      margin: 6,
+      margin: 10,
       padding: 10,
       borderWidth: 0.5,
       borderColor: colors.accentDark,

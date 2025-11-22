@@ -41,7 +41,7 @@ export const homeStyle = createStyleSheet(
       marginBottom: spacing.xl,
     },
     menusCont: {
-      paddingHorizontal: spacing.xl,
+      paddingHorizontal: 20,
       marginTop: 150,
     },
   })

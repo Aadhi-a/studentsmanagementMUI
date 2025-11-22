@@ -19,6 +19,7 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+
 import Icon from "@components/global/Icon";
 import { Colors } from "@unistyles/constants";
 import { useSharedState } from "@features/tabs/SharedContext";
@@ -27,7 +28,7 @@ import { homeStyle } from "@unistyles/homeStyle";
 import { getStorage } from "@utils/mmkvStrorage";
 import { UserType } from "@utils/types/authType";
 import StyledText from "@components/global/StylesText";
-import { navigate, resetAndNavigate } from "@utils/NavigationUtills";
+import { navigate } from "@utils/NavigationUtills";
 import AdsBanner from "@components/pages/AdsBanner";
 import { homeMenus } from "@assets/data/mockdata";
 import SectionMenu from "@components/pages/SectionMenu";
@@ -35,18 +36,19 @@ import SectionMenu from "@components/pages/SectionMenu";
 const HomeScreen = () => {
   const { styles } = useStyles(homeStyle);
   const insets = useSafeAreaInsets();
+
   const { scrollY } = useSharedState();
   const lastOffsetY = useSharedValue(0);
+
   const [user, setUser] = useState<UserType | null>(null);
 
+  // Load User
   const loadUser = () => {
     try {
       const userObj = getStorage("User");
-      console.log("HomeScreenUserGet", userObj);
       if (userObj) {
         const parsed = JSON.parse(userObj);
         setUser(parsed);
-        console.log("User:parsed", parsed);
       }
     } catch (e) {
       console.error("Error loading user:", e);
@@ -57,6 +59,7 @@ const HomeScreen = () => {
     loadUser();
   }, []);
 
+  // Header Animation
   const animatedHeader = useAnimatedStyle(() => {
     const shadowOpacity = interpolate(
       lastOffsetY.value,
@@ -80,6 +83,7 @@ const HomeScreen = () => {
   const HEADER_HEIGHT = 60;
   const TOTAL_HEADER_HEIGHT = HEADER_HEIGHT + insets.top;
 
+  // Logout
   const handleLogout = () => {
     Alert.alert("Confirm Logout", "Are you sure you want to logout?", [
       { text: "Cancel", style: "cancel" },
@@ -87,6 +91,7 @@ const HomeScreen = () => {
     ]);
   };
 
+  // Scroll Handler
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
       const currentY = event.contentOffset.y;
@@ -116,82 +121,80 @@ const HomeScreen = () => {
         <SafeAreaView>
           <View style={styles.headerContent}>
             <View style={styles.content}>
-              <View>
-                <TouchableOpacity onPress={handleProfile}>
-                  <Image
-                    source={require("@assets/images/avatar.png")}
-                    style={styles.logo}
-                    resizeMode="contain"
-                  />
-                </TouchableOpacity>
-              </View>
+              {/* Avatar */}
+              <TouchableOpacity onPress={handleProfile}>
+                <Image
+                  source={require("@assets/images/avatar.png")}
+                  style={styles.logo}
+                />
+              </TouchableOpacity>
+
+              {/* Greeting */}
               <View>
                 <StyledText
                   variant="h6"
                   fontFamily="Charm_Bold"
-                  style={{ fontWeight: 400 }}
                   color={Colors.neutralDark}
-                >
-                  {`Haii  ${user?.role} !`}
-                </StyledText>
+                >{`Haii ${user?.role} !`}</StyledText>
+
                 <StyledText
+                  fontFamily="CharmRegular"
                   variant="h7"
-                  fontFamily="Charm_Bold"
-                  style={{ fontWeight: 400 }}
                   color={Colors.neutralDark}
                 >
                   {user?.name}
                 </StyledText>
               </View>
             </View>
-            <View>
-              <TouchableOpacity onPress={handleLogout}>
-                <Icon
-                  name="powerOff"
-                  size={26}
-                  color={Colors.errorDark}
-                  strokeWidth={2}
-                />
-              </TouchableOpacity>
-            </View>
+
+            {/* Logout */}
+            <TouchableOpacity onPress={handleLogout}>
+              <Icon
+                name="powerOff"
+                size={26}
+                color={Colors.errorDark}
+                strokeWidth={2}
+              />
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </Animated.View>
 
-      {/* Scroll Area → Starts exactly AFTER the header */}
-      <Animated.ScrollView
+      {/* MAIN SCROLL: FlatList only */}
+      <Animated.FlatList
+        data={homeMenus}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={3}
+        showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingTop: TOTAL_HEADER_HEIGHT,
+          paddingBottom: 50,
         }}
-      >
-        <View style={styles.adsContainer}>
-          <AdsBanner />
-        </View>
-        <View style={styles.menusCont}>
-          <StyledText
-            variant="h4"
-            fontFamily="CharmRegular"
-            color={Colors.neutralDark}
-          >
-            Acadamic
-          </StyledText>
-          <FlatList
-            data={homeMenus}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <SectionMenu
-                title={item.title}
-                img={item.img}
-                router={item.router}
-              />
-            )}
-            numColumns={3}
-          />
-        </View>
-      </Animated.ScrollView>
+        ListHeaderComponent={
+          <>
+            {/* Ads Banner */}
+            <View style={styles.adsContainer}>
+              <AdsBanner />
+            </View>
+
+            {/* Title */}
+            <View style={styles.menusCont}>
+              <StyledText
+                variant="h4"
+                fontFamily="CharmRegular"
+                color={Colors.neutralDark}
+              >
+                Acadamic
+              </StyledText>
+            </View>
+          </>
+        }
+        renderItem={({ item }) => (
+          <SectionMenu title={item.title} img={item.img} router={item.router} />
+        )}
+      />
     </View>
   );
 };
