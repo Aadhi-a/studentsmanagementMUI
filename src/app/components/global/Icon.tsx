@@ -1,5 +1,7 @@
 import ArrowLeftIcon from "@assets/icons/arrowLeftIcon";
 import ArrowRightIcon from "@assets/icons/arrowRightIcon";
+import chatsFilledIcon from "@assets/icons/chatsFilledIcon";
+import chatsOutlineIcon from "@assets/icons/chatsOutlineIcon";
 import ExamsFIcon from "@assets/icons/examsFIcon";
 import ExamsOIcon from "@assets/icons/examsOIcon";
 import EyeFilled from "@assets/icons/EyeFilled";
@@ -13,7 +15,8 @@ import StudentsFIcon from "@assets/icons/studentsFIcon";
 import StudentsOIcon from "@assets/icons/studentsOIcon";
 import TeacherFIcon from "@assets/icons/teacherFIcon";
 import TeacherOIcon from "@assets/icons/teacherOIcon";
-import UserIcon from "@assets/icons/userIcon";
+import userFilledIcon from "@assets/icons/userFilledIcon";
+import UserOutlineIcon from "@assets/icons/useroutlineIcon";
 import React, { FC } from "react";
 import { ImageStyle, StyleProp, TextStyle, ViewStyle } from "react-native";
 import { SvgProps } from "react-native-svg";
@@ -31,10 +34,13 @@ const icons = {
   studentsOutline: StudentsOIcon,
   teacherFilled: TeacherFIcon,
   teacherOutline: TeacherOIcon,
-  user: UserIcon,
+  userOutline: UserOutlineIcon,
+  userFilled: userFilledIcon,
   powerOff: PowerOffIcon,
   arrowLeft: ArrowLeftIcon,
   arrowRight: ArrowRightIcon,
+  chatsOutline: chatsOutlineIcon,
+  chatsFilled: chatsFilledIcon,
 };
 
 type IconName = keyof typeof icons;

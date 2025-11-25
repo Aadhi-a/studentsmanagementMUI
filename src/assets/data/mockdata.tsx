@@ -49,32 +49,97 @@ export const users = [
 ];
 
 // HomeMenus.ts
-export const homeMenus = [
-  {
-    id: 1,
-    title: "Attendance",
-    img: require("@assets/images/attance.png"),
-    router: "StudentAttance",
-  },
-  {
-    id: 2,
-    title: "Timetable",
-    img: require("@assets/images/timeTable.png"),
-    router: "TimeTable",
-  },
-  {
-    id: 3,
-    title: "Exams",
-    img: require("@assets/images/results.png"),
-    router: "ExamsScreen",
-  },
-  // {
-  //   id: 4,
-  //   title: "Profile",
-  //   img: require("@assets/images/logo.png"),
-  //   router: "ProfileScreen",
-  // },
-];
+export const roleHomeMenus = {
+  admin: [
+    {
+      id: 1,
+      title: "Dashboard",
+      img: require("@assets/images/dashboard.png"),
+      router: "AdminDashboard",
+    },
+    {
+      id: 2,
+      title: "Teacher Attendance",
+      img: require("@assets/images/staffAttadance.png"),
+      router: "TeacherAttendance",
+    },
+    {
+      id: 3,
+      title: "Students Attendance",
+      img: require("@assets/images/studentAttadance.png"),
+      router: "StudentAttendance",
+    },
+    {
+      id: 4,
+      title: "Exams",
+      img: require("@assets/images/exams.png"),
+      router: "TimeTable",
+    },
+  ],
+
+  teacher: [
+    {
+      id: 1,
+      title: "My Dashboard",
+      img: require("@assets/images/staffDashboard.png"),
+      router: "TeacherDashboard",
+    },
+    {
+      id: 2,
+      title: "My Attendance",
+      img: require("@assets/images/staffAttadance.png"),
+      router: "TeacherAttendance",
+    },
+    {
+      id: 3,
+      title: "Homework",
+      img: require("@assets/images/homeWork.png"),
+      router: "HomeWork",
+    },
+  ],
+
+  student: [
+    {
+      id: 1,
+      title: "My Dashboard",
+      img: require("@assets/images/dashboard.png"),
+      router: "StudentDashboard",
+    },
+    {
+      id: 2,
+      title: "Timetable",
+      img: require("@assets/images/timeTable.png"),
+      router: "TimeTable",
+    },
+    {
+      id: 3,
+      title: "Results",
+      img: require("@assets/images/results.png"),
+      router: "ResultsScreen",
+    },
+  ],
+
+  parent: [
+    {
+      id: 1,
+      title: "Student Attendance",
+      img: require("@assets/images/studentAttadance.png"),
+      router: "StudentAttendance",
+    },
+    {
+      id: 2,
+      title: "Fees",
+      img: require("@assets/images/fees.png"),
+      router: "FeesScreen",
+    },
+    {
+      id: 3,
+      title: "Results",
+      img: require("@assets/images/results.png"),
+      router: "ResultsScreen",
+    },
+  ],
+};
 
 export const teacherTimetable: TimetableSlot[] = [
   {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { G, Circle, Path } from "react-native-svg";
 
-const UserIcon = (props: any) => (
+const UserOutlineIcon = (props: any) => (
   <Svg
     viewBox="0 0 24 24"
     fill="none"
@@ -38,4 +38,4 @@ const UserIcon = (props: any) => (
     </G>
   </Svg>
 );
-export default UserIcon;
+export default UserOutlineIcon;

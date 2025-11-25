@@ -20,7 +20,7 @@ const SectionMenu: React.FC<HomeMenuItemProps> = ({ title, img, router }) => {
       >
         <Image source={img} style={styles.menuImage} />
         <StyledText
-          variant="h5"
+          variant="h6"
           fontFamily="HiMelodyRegular"
           style={{ textAlign: "center" }}
         >
@@ -37,12 +37,12 @@ const SectionMenuStyle = createStyleSheet(
   ({ fonts, colors, device, fontSize }) => ({
     menuItem: {
       width: device.wp(28),
-      height: device.hp(10),
+      height: device.hp(14),
       alignItems: "center",
       margin: 10,
       padding: 10,
-      borderWidth: 0.5,
-      borderColor: colors.accentDark,
+      borderWidth: 1,
+      borderColor: colors.neutral,
       borderRadius: 10,
       backgroundColor: colors.CloudDrift,
       shadowColor: "#000",
@@ -52,7 +52,7 @@ const SectionMenuStyle = createStyleSheet(
     },
     menuImage: {
       width: 90,
-      height: 50,
+      height: 70,
       marginBottom: 5,
       resizeMode: "contain",
     },

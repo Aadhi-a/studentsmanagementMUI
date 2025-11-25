@@ -25,18 +25,25 @@ import { Colors } from "@unistyles/constants";
 import { useSharedState } from "@features/tabs/SharedContext";
 import { useStyles } from "react-native-unistyles";
 import { homeStyle } from "@unistyles/homeStyle";
-import { getStorage } from "@utils/mmkvStrorage";
+import { getStorage, storage } from "@utils/mmkvStrorage";
 import { UserType } from "@utils/types/authType";
 import StyledText from "@components/global/StylesText";
-import { navigate } from "@utils/NavigationUtills";
+import { navigate, resetAndNavigate } from "@utils/NavigationUtills";
 import AdsBanner from "@components/pages/AdsBanner";
-import { homeMenus } from "@assets/data/mockdata";
+import { roleHomeMenus } from "@assets/data/mockdata";
 import SectionMenu from "@components/pages/SectionMenu";
+
+export interface HomeMenuItem {
+  id: number;
+  title: string;
+  img: any;
+  router: string;
+}
 
 const HomeScreen = () => {
   const { styles } = useStyles(homeStyle);
   const insets = useSafeAreaInsets();
-
+  const [menus, setMenus] = useState<HomeMenuItem[]>([]);
   const { scrollY } = useSharedState();
   const lastOffsetY = useSharedValue(0);
 
@@ -57,6 +64,15 @@ const HomeScreen = () => {
 
   useEffect(() => {
     loadUser();
+    const userObj = getStorage("User");
+    if (!userObj) return;
+
+    const user = JSON.parse(userObj);
+
+    if (user.isAdmin === 1) setMenus(roleHomeMenus.admin);
+    else if (user.isTeacher === 1) setMenus(roleHomeMenus.teacher);
+    else if (user.isStudent === 1) setMenus(roleHomeMenus.student);
+    else if (user.isParent === 1) setMenus(roleHomeMenus.parent);
   }, []);
 
   // Header Animation
@@ -87,7 +103,14 @@ const HomeScreen = () => {
   const handleLogout = () => {
     Alert.alert("Confirm Logout", "Are you sure you want to logout?", [
       { text: "Cancel", style: "cancel" },
-      { text: "Logout", style: "destructive", onPress: () => {} },
+      {
+        text: "Logout",
+        style: "destructive",
+        onPress: () => {
+          storage.clearAll();
+          resetAndNavigate("Splash");
+        },
+      },
     ]);
   };
 
@@ -162,7 +185,7 @@ const HomeScreen = () => {
 
       {/* MAIN SCROLL: FlatList only */}
       <Animated.FlatList
-        data={homeMenus}
+        data={menus}
         keyExtractor={(item) => item.id.toString()}
         numColumns={3}
         showsVerticalScrollIndicator={false}
@@ -186,7 +209,7 @@ const HomeScreen = () => {
                 fontFamily="CharmRegular"
                 color={Colors.neutralDark}
               >
-                Acadamic
+                Academics
               </StyledText>
             </View>
           </>

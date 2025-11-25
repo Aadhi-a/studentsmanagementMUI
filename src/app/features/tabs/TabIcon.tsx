@@ -12,47 +12,25 @@ export const icons = {
         color={props.color}
       />
     ),
-  Teachers: (props: any) =>
+  Chat: (props: any) =>
     props.isFocused ? (
-      <Icon name="teacherFilled" size={props.size} color={props.color} />
+      <Icon name="chatsFilled" size={props.size} color={props.color} />
     ) : (
       <Icon
-        name="teacherOutline"
+        name="chatsOutline"
         size={props.size}
-        strokeWidth={1.5}
+        strokeWidth={2}
         color={props.color}
       />
     ),
-  Students: (props: any) =>
+  Profile: (props: any) =>
     props.isFocused ? (
-      <Icon name="studentsFilled" size={props.size} color={props.color} />
+      <Icon name="userFilled" size={props.size} color={props.color} />
     ) : (
       <Icon
-        name="studentsOutline"
+        name="userOutline"
         size={props.size}
-        strokeWidth={0.4}
-        color={props.color}
-      />
-    ),
-  Parents: (props: any) =>
-    props.isFocused ? (
-      <Icon name="studentsFilled" size={props.size} color={props.color} />
-    ) : (
-      <Icon
-        name="studentsOutline"
-        size={props.size}
-        strokeWidth={0.4}
-        color={props.color}
-      />
-    ),
-  Exams: (props: any) =>
-    props.isFocused ? (
-      <Icon name="examsFilled" size={props.size} color={props.color} />
-    ) : (
-      <Icon
-        name="examsOutline"
-        size={props.size}
-        strokeWidth={1.5}
+        strokeWidth={2.5}
         color={props.color}
       />
     ),

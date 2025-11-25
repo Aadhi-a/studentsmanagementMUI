@@ -8,6 +8,8 @@ import { roleMenus } from "./RoleMenus";
 import { screenMapper } from "./screenMapper";
 import { resetAndNavigate } from "@utils/NavigationUtills";
 import LoaderAnimation from "@components/pages/LoaderAnimation";
+import ProfileScreen from "@screens/ProfileScreen";
+import ChatsScreen from "@screens/ChatsScreen";
 
 interface MenuItem {
   name: string;
@@ -18,56 +20,64 @@ const Tab = createBottomTabNavigator();
 
 const UserBottomTabs: React.FC<{}> = () => {
   const [loading, setLoading] = useState(false);
-  const [menus, setMenus] = useState<MenuItem[]>([]);
+  // const [menus, setMenus] = useState<MenuItem[]>([]);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  // useEffect(() => {
+  //   try {
+  //     const userStr = getStorage("User"); // string
+  //     console.log("userStorage Raw:", userStr);
+
+  //     if (!userStr) {
+  //       console.log("No user in storage");
+  //       return;
+  //     }
+
+  //     const parsed = JSON.parse(userStr);
+  //     console.log("Parsed User:", parsed);
+
+  //     // 🎯 Role-based bottom menu selection using switch
+  //     switch (true) {
+  //       case parsed.isAdmin === 1:
+  //         setMenus(roleMenus.admin);
+  //         break;
+
+  //       case parsed.isTeacher === 1:
+  //         setMenus(roleMenus.teacher);
+  //         break;
+
+  //       case parsed.isStudent === 1:
+  //         setMenus(roleMenus.student);
+  //         break;
+
+  //       case parsed.isParent === 1:
+  //         setMenus(roleMenus.parent);
+  //         break;
+
+  //       default:
+  //         resetAndNavigate("ErrorScreen");
+  //         break;
+  //     }
+  //   } catch (error) {
+  //     console.log("Error parsing user:", error);
+  //   }
+  // }, []);
 
   useEffect(() => {
-    try {
-      const userStr = getStorage("User"); // string
-      console.log("userStorage Raw:", userStr);
+    const userStr = getStorage("User");
+    if (!userStr) return;
+    const parsed = JSON.parse(userStr);
 
-      if (!userStr) {
-        console.log("No user in storage");
-        return;
-      }
-
-      const parsed = JSON.parse(userStr);
-      console.log("Parsed User:", parsed);
-
-      // 🎯 Role-based bottom menu selection using switch
-      switch (true) {
-        case parsed.isAdmin === 1:
-          setMenus(roleMenus.admin);
-          break;
-
-        case parsed.isTeacher === 1:
-          setMenus(roleMenus.teacher);
-          break;
-
-        case parsed.isStudent === 1:
-          setMenus(roleMenus.student);
-          break;
-
-        case parsed.isParent === 1:
-          setMenus(roleMenus.parent);
-          break;
-
-        default:
-          resetAndNavigate("ErrorScreen");
-          break;
-      }
-    } catch (error) {
-      console.log("Error parsing user:", error);
-    }
+    if (parsed.isAdmin === 1) setUserRole("admin");
+    else if (parsed.isTeacher === 1) setUserRole("teacher");
+    else if (parsed.isStudent === 1) setUserRole("student");
+    else if (parsed.isParent === 1) setUserRole("parent");
   }, []);
-
   const handleTabPress = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   };
-
-  if (!menus.length) return null;
 
   return (
     <View style={{ flex: 1 }}>
@@ -79,14 +89,23 @@ const UserBottomTabs: React.FC<{}> = () => {
           animation: "fade",
         }}
       >
-        {menus.map((item) => (
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          listeners={{ tabPress: handleTabPress }}
+        />
+        {(userRole === "teacher" || userRole === "parent") && (
           <Tab.Screen
-            key={item.name}
-            name={item.name}
-            component={screenMapper[item.screen]}
+            name="Chat"
+            component={ChatsScreen}
             listeners={{ tabPress: handleTabPress }}
           />
-        ))}
+        )}
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          listeners={{ tabPress: handleTabPress }}
+        />
       </Tab.Navigator>
       {loading && (
         <View
