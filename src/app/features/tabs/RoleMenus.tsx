@@ -13,7 +13,7 @@ export const roleMenus = {
 
   student: [
     { name: "Home", screen: "HomeScreen" },
-    { name: "Profile", screen: "ProfileScreen" },
+    { name: "Profile", screen: "MonthlyTodoScreen" },
   ],
 
   parent: [
